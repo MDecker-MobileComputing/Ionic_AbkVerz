@@ -1,12 +1,14 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Abkürzungsverzeichnis</ion-title>
+    <ion-title>Liste der Abkürzungen</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
+
+  <p>Anzahl gespeicherter Abkürzungen: {{anzahlFarbenPromise | async}}</p>
 
 </ion-content>
