@@ -8,7 +8,7 @@ with [Ionic Storage](https://ionicframework.com/docs/angular/storage#ionic-stora
 ----
 ## Run the app locally ##
 
-Prerequisite: NPM package `ionic` must be installed globally.
+Prerequisite: NPM package [`@ionic/cli`](https://www.npmjs.com/package/@ionic/cli) must be installed globally.
 
 1. Clone the repository.
 
