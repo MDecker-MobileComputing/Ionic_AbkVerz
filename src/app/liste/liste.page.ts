@@ -13,9 +13,9 @@ export class ListePage {
 
   /**
    * Asynchrone Funktion getAnzahlGespeicherteFarben() liefert Promise zurück, der bei Interpolation
-   * in UI durch Pipe "async" aufgelöst werden muss.
+   * in UI durch Pipe "async" aufgelöst wird.
    */
-  private anzahlFarbenPromise : any;
+  private anzahlFarbenPromise : Promise<number>;
 
 
   /**

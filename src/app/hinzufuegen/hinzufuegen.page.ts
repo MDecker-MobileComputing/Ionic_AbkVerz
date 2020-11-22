@@ -48,14 +48,16 @@ export class HinzufuegenPage {
 
 
     // eigentliches Speichern
-    let promise = this.speicherService.speichereBedeutungFuerAbkuerzung(this.abkuerzung, this.bedeutung);
+    let anzahlBedeutungenPromise = this.speicherService.speichereBedeutungFuerAbkuerzung(this.abkuerzung, this.bedeutung);
 
-    promise.then( () => {
+    anzahlBedeutungenPromise.then( (anzahlBedeutungen) => {
+
+      this.dialogToastHelferService.zeigeToast(
+        `Erfolgreich gespeichert, für "${this.abkuerzung}" sind jetzt ${anzahlBedeutungen} Bedeutungen gespeichert.`
+      );
 
       this.abkuerzung = "";
       this.bedeutung  = "";
-
-      this.dialogToastHelferService.zeigeToast("Erfolgreich gespeichert.");
 
     }).catch( () => {
 

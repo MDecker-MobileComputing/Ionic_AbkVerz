@@ -26,7 +26,7 @@ export class SpeicherService {
   /**
    * Konstruktor für Dependency Injection.
    */
-  constructor(private storage: Storage ){}
+  constructor(private storage: Storage){}
 
 
   /**
@@ -35,7 +35,7 @@ export class SpeicherService {
    *
    * @return  Promise mit Anzahl der aktuell gespeicherten Abkürzungen.
    */
-  async getAnzahlGespeicherteAbkuerzungen() {
+  async getAnzahlGespeicherteAbkuerzungen(): Promise<number> {
 
     let anzahlPromise = this.storage.length();
 
@@ -70,24 +70,53 @@ export class SpeicherService {
    *  
    * @param bedeutung  Bedeutung für die Abkürzung, wird (nach Trimming) als Wert verwendet.
    * 
-   * @return  `true` wenn Speichern erfolgreich war, sonst `false`.
+   * @return  Anzahl der Bedeutungen, die nach Hinzufügen von `bedeutung` für `abkuerzung` insgesamt
+   *          gespeichert sind. Wenn `0` zurückgegeben wird, dann war das Speichern nicht erfolgreich.
    */
   async speichereBedeutungFuerAbkuerzung(abkuerzung: string, bedeutung: string): Promise<any> {
 
-    const abkuerzungNormiert = abkuerzung.trim().toUpperCase();
+    let gespeichertPromise  = null;
+    let bedeutungenArrayNeu = null;
 
-    const bedeutungArray = [ bedeutung.trim(), bedeutung.trim() ];
+    let bedeutungenPromise = this.holeBedeutungenFuerAbk(abkuerzung);
 
-    const gespeichertPromise = this.storage.set(abkuerzungNormiert, bedeutungArray);
+    bedeutungenPromise.then( (bedeutungen) => {
 
-    gespeichertPromise.then( function() {
+      const abkuerzungNormiert = abkuerzung.trim().toUpperCase();      
 
-      return true;
+      if (bedeutungen === null || bedeutungen === undefined) {
 
-    }).catch( function(error) {
+        // Für die Abkürzung ist noch überhaupt keine Bedeutung gespeichert
 
-      return false;
+        bedeutungenArrayNeu = [ bedeutung ];
+
+        
+        gespeichertPromise = this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
+      } else { // Für die Abkürzung war schon mindestens eine Bedeutung abgespeichert
+        
+        bedeutungenArrayNeu = bedeutungen;
+        bedeutungenArrayNeu.push(bedeutung);
+
+        gespeichertPromise = this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
+      }
+
+      gespeichertPromise.then( () => {
+
+        const anzBedeutungen = bedeutungenArrayNeu.length;
+        return Promise.resolve( anzBedeutungen );
+
+      }).catch( (fehler) => {
+
+        console.log(`Fehler beim Speichern der Bedeutung "${bedeutung}" für die Abkürzung "${abkuerzung}": ${fehler}`);
+        return 0;
+      });
+            
+    }).catch( (fehler) => {
+
+      console.log(`Fehler bei Abfrage der Bedeutungen für Abkürzung "${abkuerzung}": ${fehler}`);
+      return Promise.resolve( 0 );
     });
+
   }
 
 }
