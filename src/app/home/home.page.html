@@ -9,4 +9,13 @@
 
 <ion-content [fullscreen]="true">
 
+  <p>Auf dieser Seite können Sie nach Bedeutungen für Abkürzungen, die Sie zuvor in der App gespeichert haben, suchen.</p>
+
+  <ion-item>
+    <ion-label position="fixed">Abkürzung:</ion-label>
+    <ion-input type="text" [(ngModel)]="abkuerzung"></ion-input>
+  </ion-item>  
+  
+  <ion-button expand="block" (click)="onSuchenButton()" >Bedeutungen suchen</ion-button>      
+
 </ion-content>

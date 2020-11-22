@@ -10,8 +10,13 @@ import { Storage } from '@ionic/storage';
  * <br><br>
  * 
  * "ionic storage" stellt einen Key-Value-Speicher zu Verfügung. 
- * Wir verwenden die Abkürzungen (nach Normierung auf Kleinbuchstaben) als Key,
+ * Wir verwenden die Abkürzungen (nach Normierung auf Großbuchstaben) als Key,
  * die Bedeutung(en) wird/werden unter diesem Key bespeichert.
+ * <br><br>
+ * 
+ * Beispiele:
+ * * "OOO": [ "Out of Office", "Out of Order" ]
+ * * "AVD": [ "Android Virtual Device (Emulator-Instanz" ]
  */
 @Injectable({
   providedIn: 'root'
@@ -21,7 +26,8 @@ export class SpeicherService {
   /**
    * Konstruktor für Dependency Injection.
    */
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage ){}
+              
 
 
   /**
@@ -44,9 +50,9 @@ export class SpeicherService {
    * 
    * @return  Promise mit String-Array, der die für die Abkürzung gefunden Bedeutungen enthält.
    */
-  holeBedeutungenFuerAbk(abkuerzung: string): Promise<any> {
+  async holeBedeutungenFuerAbk(abkuerzung: string): Promise<any> {
 
-    const abkuerzungNormiert = abkuerzung.trim().toLowerCase(); 
+    const abkuerzungNormiert = abkuerzung.trim().toUpperCase(); 
 
     return this.storage.get(abkuerzungNormiert);
   }
@@ -65,7 +71,7 @@ export class SpeicherService {
    */
   async speichereBedeutungFuerAbkuerzung(abkuerzung: string, bedeutung: string): Promise<any> {
 
-    const abkuerzungNormiert = abkuerzung.trim().toLowerCase();
+    const abkuerzungNormiert = abkuerzung.trim().toUpperCase();
 
     const bedeutungArray = [ bedeutung.trim() ];
 
