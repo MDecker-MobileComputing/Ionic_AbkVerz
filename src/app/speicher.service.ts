@@ -51,13 +51,15 @@ export class SpeicherService {
    * 
    * @return  Promise mit String-Array, der die für die Abkürzung gefunden Bedeutungen enthält.
    *          Wenn keine Bedeutungen für die Abkürzung gefunden wurden, dann ist der Wert `null`
-   *          (aber keine rejected Promise). 
+   *          (aber kein Promise, der in Zustand "rejected" auflöst). 
    */
   async holeBedeutungenFuerAbk(abkuerzung: string): Promise<any> {
 
     const abkuerzungNormiert = abkuerzung.trim().toUpperCase(); 
 
-    return this.storage.get(abkuerzungNormiert);
+    const anyPromise = this.storage.get(abkuerzungNormiert);
+
+    return anyPromise;
   }
 
 
