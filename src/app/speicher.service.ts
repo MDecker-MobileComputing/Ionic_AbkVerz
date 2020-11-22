@@ -70,8 +70,7 @@ export class SpeicherService {
    *  
    * @param bedeutung  Bedeutung für die Abkürzung, wird (nach Trimming) als Wert verwendet.
    * 
-   * @return  Anzahl der Bedeutungen, die nach Hinzufügen von `bedeutung` für `abkuerzung` insgesamt
-   *          gespeichert sind. Wenn `0` zurückgegeben wird, dann war das Speichern nicht erfolgreich.
+   * @return  Promise-Objekt von Aufruf der Methode `storage.set(key, value)`.
    */
   async speichereBedeutungFuerAbkuerzung(abkuerzung: string, bedeutung: string): Promise<any> {
 
@@ -89,9 +88,9 @@ export class SpeicherService {
         // Für die Abkürzung ist noch überhaupt keine Bedeutung gespeichert
 
         bedeutungenArrayNeu = [ bedeutung ];
-
         
         gespeichertPromise = this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
+
       } else { // Für die Abkürzung war schon mindestens eine Bedeutung abgespeichert
         
         bedeutungenArrayNeu = bedeutungen;
@@ -100,23 +99,8 @@ export class SpeicherService {
         gespeichertPromise = this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
       }
 
-      gespeichertPromise.then( () => {
-
-        const anzBedeutungen = bedeutungenArrayNeu.length;
-        return Promise.resolve( anzBedeutungen );
-
-      }).catch( (fehler) => {
-
-        console.log(`Fehler beim Speichern der Bedeutung "${bedeutung}" für die Abkürzung "${abkuerzung}": ${fehler}`);
-        return 0;
-      });
-            
-    }).catch( (fehler) => {
-
-      console.log(`Fehler bei Abfrage der Bedeutungen für Abkürzung "${abkuerzung}": ${fehler}`);
-      return Promise.resolve( 0 );
+      return gespeichertPromise;
     });
-
   }
 
 }

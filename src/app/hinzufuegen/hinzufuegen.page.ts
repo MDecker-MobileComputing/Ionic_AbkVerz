@@ -48,20 +48,19 @@ export class HinzufuegenPage {
 
 
     // eigentliches Speichern
-    let anzahlBedeutungenPromise = this.speicherService.speichereBedeutungFuerAbkuerzung(this.abkuerzung, this.bedeutung);
+    let gespeichertPromise = this.speicherService.speichereBedeutungFuerAbkuerzung(this.abkuerzung, this.bedeutung);
 
-    anzahlBedeutungenPromise.then( (anzahlBedeutungen) => {
+    gespeichertPromise.then( () => {
 
-      this.dialogToastHelferService.zeigeToast(
-        `Erfolgreich gespeichert, für "${this.abkuerzung}" sind jetzt ${anzahlBedeutungen} Bedeutungen gespeichert.`
-      );
+      this.dialogToastHelferService.zeigeToast( "Erfolgreich gespeichert" );
 
       this.abkuerzung = "";
       this.bedeutung  = "";
 
-    }).catch( () => {
+    }).catch( (fehler) => {
 
-      this.dialogToastHelferService.zeigeDialog("Fehler", "Speichern fehlgeschlagen");
+      this.dialogToastHelferService.zeigeDialog("Fehler", `Speichern fehlgeschlagen: ${fehler}`);
+      
     });
 
   }
