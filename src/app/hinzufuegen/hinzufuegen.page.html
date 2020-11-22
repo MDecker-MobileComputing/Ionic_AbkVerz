@@ -10,7 +10,21 @@
 <ion-content>
 
   <p>
-    Hier können Sie für eine neue oder eine bestehende Abkürzung eine Bedeutung festlegen.
+    Auf dieser Seite können Sie für eine neue oder eine bestehende Abkürzung eine Bedeutung festlegen.
   </p>
+
+  <ion-item>
+    <ion-label position="fixed">Abkürzung:</ion-label>
+    <ion-input type="text" [(ngModel)]="abkuerzung"></ion-input>
+  </ion-item>  
+
+  <ion-item>
+    <ion-label position="fixed">Bedeutung:</ion-label>
+    <ion-input type="text" [(ngModel)]="bedeutung"></ion-input>
+  </ion-item>  
+  
+  &nbsp;
+    
+  <ion-button expand="block" (click)="onHinzufuegenButton()" >Speichern</ion-button>      
 
 </ion-content>
