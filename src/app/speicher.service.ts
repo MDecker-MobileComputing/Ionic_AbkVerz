@@ -27,7 +27,6 @@ export class SpeicherService {
    * Konstruktor für Dependency Injection.
    */
   constructor(private storage: Storage ){}
-              
 
 
   /**
@@ -36,7 +35,7 @@ export class SpeicherService {
    *
    * @return  Promise mit Anzahl der aktuell gespeicherten Abkürzungen.
    */
-  getAnzahlGespeicherteAbkuerzungen() {
+  async getAnzahlGespeicherteAbkuerzungen() {
 
     let anzahlPromise = this.storage.length();
 
@@ -45,10 +44,14 @@ export class SpeicherService {
 
 
   /**
+   * Sucht nach Bedeutungen für die als Argument übergebene Abkürzung. Es können keine, eine
+   * oder mehrere Bedeutungen für eine Abkürzung gefunden werden.
    * 
    * @param abkuerzung   Abkürzung, für die nach Bedeutungen gesucht werden soll.
    * 
    * @return  Promise mit String-Array, der die für die Abkürzung gefunden Bedeutungen enthält.
+   *          Wenn keine Bedeutungen für die Abkürzung gefunden wurden, dann ist der Wert `null`
+   *          (aber keine rejected Promise). 
    */
   async holeBedeutungenFuerAbk(abkuerzung: string): Promise<any> {
 
@@ -61,11 +64,11 @@ export class SpeicherService {
   /**
    * Abkürzung und Bedeutung speichern. Wenn für die Abkürzung noch kein Bedeutung gespeichert
    * ist, dann wird der Eintrag ganz neu angelegt. Wenn es schon eine oder mehrere Bedeutungen
-   * für die Abkürzung gibt, dann wird die neue Bedeutung zum Array der Abkürzungen hinzufügt.
+   * für die Abkürzung gibt, dann wird die neue Bedeutung zum Array der Bedeutungen hinzufügt.
    * 
    * @param abkuerzung  Abkürzung, wird (nach Normierung) als Key verwendet.
    *  
-   * @param bedeutung   Bedeutung für die Abkürzung, wird (nach Trimming) als Wert verwendet.
+   * @param bedeutung  Bedeutung für die Abkürzung, wird (nach Trimming) als Wert verwendet.
    * 
    * @return  `true` wenn Speichern erfolgreich war, sonst `false`.
    */
@@ -73,7 +76,7 @@ export class SpeicherService {
 
     const abkuerzungNormiert = abkuerzung.trim().toUpperCase();
 
-    const bedeutungArray = [ bedeutung.trim() ];
+    const bedeutungArray = [ bedeutung.trim(), bedeutung.trim() ];
 
     const gespeichertPromise = this.storage.set(abkuerzungNormiert, bedeutungArray);
 
@@ -85,7 +88,6 @@ export class SpeicherService {
 
       return false;
     });
-
   }
 
 }

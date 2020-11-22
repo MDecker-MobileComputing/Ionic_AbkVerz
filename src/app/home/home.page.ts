@@ -33,7 +33,9 @@ export class HomePage {
 
       if (bedeutungen !== null && bedeutungen !== undefined) {
 
-        this.dialogToastHelferService.zeigeDialog(`Ergebnis für "${this.abkuerzung}":`, bedeutungen );
+        const anzahl = bedeutungen.length;
+
+        this.dialogToastHelferService.zeigeDialog(`Ergebnis für "${this.abkuerzung}" (${anzahl}):`, bedeutungen );
 
       } else {
 

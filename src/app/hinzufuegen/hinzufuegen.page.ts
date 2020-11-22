@@ -47,6 +47,7 @@ export class HinzufuegenPage {
     }
 
 
+    // eigentliches Speichern
     let promise = this.speicherService.speichereBedeutungFuerAbkuerzung(this.abkuerzung, this.bedeutung);
 
     promise.then( () => {
