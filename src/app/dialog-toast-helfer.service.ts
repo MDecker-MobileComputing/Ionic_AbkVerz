@@ -3,6 +3,8 @@ import { AlertController, ToastController } from '@ionic/angular';
 
 /**
  * Klasse für Hilfsservice zur Erzeugung von Dialogen (Alerts) und Toasts.
+ * Im Gegensatz zu Dialogen verschwinden Toasts wieder von selbst. 
+ * Für Fehlermeldungen sollten Dialoge verwendet werden.
  */
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class DialogToastHelferService {
   /**
    * Alert/Dialog anzeigen.
    * 
-   * @param title  Dialog-Titel, z.B. "Fehler".
+   * @param title  Dialog-Titel, z.B. "Fehler" oder "Ungültige Eingabe".
    * 
    * @param nachricht  Eigentlich Nachricht des Dialogs.
    */
@@ -34,7 +36,7 @@ export class DialogToastHelferService {
 
 
   /**
-   * Toast anzeigen.
+   * Toast anzeigen. Sollte nicht für die Anzeige von Fehlermeldungen verwendet werden.
    * 
    * @param nachricht  Anzuzeigender Text
    */

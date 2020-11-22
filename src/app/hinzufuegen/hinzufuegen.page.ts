@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { SpeicherService } from '../speicher.service';
 import { DialogToastHelferService } from '../dialog-toast-helfer.service' ;
 
-
+/**
+ * Page-Klasse zum Hinzufügen von neuen Bedeutungen zu bereits bekannten oder neuen Abkürzungen.
+ * <br><br>
+ * 
+ * Verzeichnis mit vielen engl. Abkürzungen: https://www.abbreviations.com
+ */
 @Component({
   selector: 'app-hinzufuegen',
   templateUrl: './hinzufuegen.page.html',
@@ -20,14 +25,27 @@ export class HinzufuegenPage {
   /**
    * Konstruktor für Dependency Injection.
    */
-  constructor( private speicherService: SpeicherService, 
+  constructor( private speicherService         : SpeicherService, 
                private dialogToastHelferService: DialogToastHelferService
              ) {}
+
 
   /**
    * Event-Handler-Methode für Button "Hinzufügen".
    */
   private onHinzufuegenButton() {
+
+    if (this.abkuerzung.trim().length === 0) {
+
+      this.dialogToastHelferService.zeigeDialog("Ungültige Eingabe", "Keinen Wert für 'Abkürzung' eingegeben.");
+      return;
+    }
+    if (this.bedeutung.trim().length === 0) {
+      
+      this.dialogToastHelferService.zeigeDialog("Ungültige Eingabe", "Keinen Wert für 'Bedeutung' eingegeben.");
+      return;
+    }
+
 
     let promise = this.speicherService.speichereBedeutungFuerAbkuerzung(this.abkuerzung, this.bedeutung);
 

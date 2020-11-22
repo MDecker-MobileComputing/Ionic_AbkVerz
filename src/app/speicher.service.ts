@@ -39,23 +39,47 @@ export class SpeicherService {
 
 
   /**
-   * Abkürzung und Wert speichern.
+   * 
+   * @param abkuerzung   Abkürzung, für die nach Bedeutungen gesucht werden soll.
+   * 
+   * @return  Promise mit String-Array, der die für die Abkürzung gefunden Bedeutungen enthält.
+   */
+  holeBedeutungenFuerAbk(abkuerzung: string): Promise<any> {
+
+    const abkuerzungNormiert = abkuerzung.trim().toLowerCase(); 
+
+    return this.storage.get(abkuerzungNormiert);
+  }
+
+
+  /**
+   * Abkürzung und Bedeutung speichern. Wenn für die Abkürzung noch kein Bedeutung gespeichert
+   * ist, dann wird der Eintrag ganz neu angelegt. Wenn es schon eine oder mehrere Bedeutungen
+   * für die Abkürzung gibt, dann wird die neue Bedeutung zum Array der Abkürzungen hinzufügt.
    * 
    * @param abkuerzung  Abkürzung, wird (nach Normierung) als Key verwendet.
    *  
    * @param bedeutung   Bedeutung für die Abkürzung, wird (nach Trimming) als Wert verwendet.
    * 
-   * @return  Promise-Objekt, das den Zustand `fulfilled` annimmt, wenn das Speichern erfolgreich war.
+   * @return  `true` wenn Speichern erfolgreich war, sonst `false`.
    */
-  speichereBedeutungFuerAbkuerzung(abkuerzung: string, bedeutung: string) {
+  async speichereBedeutungFuerAbkuerzung(abkuerzung: string, bedeutung: string): Promise<any> {
 
     const abkuerzungNormiert = abkuerzung.trim().toLowerCase();
 
-    const bedeutungNormiert = bedeutung.trim();
+    const bedeutungArray = [ bedeutung.trim() ];
 
-    let gespeichertPromise = this.storage.set(abkuerzungNormiert, bedeutungNormiert);
+    const gespeichertPromise = this.storage.set(abkuerzungNormiert, bedeutungArray);
 
-    return gespeichertPromise;
+    gespeichertPromise.then( function() {
+
+      return true;
+
+    }).catch( function(error) {
+
+      return false;
+    });
+
   }
 
 }
