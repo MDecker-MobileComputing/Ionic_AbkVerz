@@ -8,12 +8,12 @@ import { Storage } from '@ionic/storage';
  *
  * "ionic-storage" Projekt hinzufügen: `npm install --save @ionic/storage`
  * <br><br>
- * 
- * "ionic storage" stellt einen Key-Value-Speicher zu Verfügung. 
+ *
+ * "ionic storage" stellt einen Key-Value-Speicher zu Verfügung.
  * Wir verwenden die Abkürzungen (nach Normierung auf Großbuchstaben) als Key,
  * die Bedeutung(en) wird/werden unter diesem Key bespeichert.
  * <br><br>
- * 
+ *
  * Beispiele:
  * * "OOO": [ "Out of Office", "Out of Order" ]
  * * "AVD": [ "Android Virtual Device (Emulator-Instanz" ]
@@ -35,7 +35,7 @@ export class SpeicherService {
    *
    * @return  Promise mit Anzahl der aktuell gespeicherten Abkürzungen.
    */
-  async getAnzahlGespeicherteAbkuerzungen(): Promise<number> {
+  public async getAnzahlGespeicherteAbkuerzungen(): Promise<number> {
 
     let anzahlPromise = this.storage.length();
 
@@ -46,16 +46,16 @@ export class SpeicherService {
   /**
    * Sucht nach Bedeutungen für die als Argument übergebene Abkürzung. Es können keine, eine
    * oder mehrere Bedeutungen für eine Abkürzung gefunden werden.
-   * 
+   *
    * @param abkuerzung   Abkürzung, für die nach Bedeutungen gesucht werden soll.
-   * 
+   *
    * @return  Promise mit String-Array, der die für die Abkürzung gefunden Bedeutungen enthält.
    *          Wenn keine Bedeutungen für die Abkürzung gefunden wurden, dann ist der Wert `null`
-   *          (aber kein Promise, der in Zustand "rejected" auflöst). 
+   *          (aber kein Promise, der in Zustand "rejected" auflöst).
    */
-  async holeBedeutungenFuerAbk(abkuerzung: string): Promise<any> {
+  public async holeBedeutungenFuerAbk(abkuerzung: string): Promise<any> {
 
-    const abkuerzungNormiert = abkuerzung.trim().toUpperCase(); 
+    const abkuerzungNormiert = abkuerzung.trim().toUpperCase();
 
     const anyPromise = this.storage.get(abkuerzungNormiert);
 
@@ -67,42 +67,35 @@ export class SpeicherService {
    * Abkürzung und Bedeutung speichern. Wenn für die Abkürzung noch kein Bedeutung gespeichert
    * ist, dann wird der Eintrag ganz neu angelegt. Wenn es schon eine oder mehrere Bedeutungen
    * für die Abkürzung gibt, dann wird die neue Bedeutung zum Array der Bedeutungen hinzufügt.
-   * 
+   *
    * @param abkuerzung  Abkürzung, wird (nach Normierung) als Key verwendet.
-   *  
+   *
    * @param bedeutung  Bedeutung für die Abkürzung, wird (nach Trimming) als Wert verwendet.
-   * 
-   * @return  Promise-Objekt von Aufruf der Methode `storage.set(key, value)`.
+   *
    */
-  async speichereBedeutungFuerAbkuerzung(abkuerzung: string, bedeutung: string): Promise<any> {
+  public async speichereBedeutungFuerAbkuerzung(abkuerzung: string, bedeutung: string) {
 
-    let gespeichertPromise  = null;
     let bedeutungenArrayNeu = null;
 
-    let bedeutungenPromise = this.holeBedeutungenFuerAbk(abkuerzung);
+    let bedeutungen = await this.holeBedeutungenFuerAbk(abkuerzung);
 
-    bedeutungenPromise.then( (bedeutungen) => {
+    const abkuerzungNormiert = abkuerzung.trim().toUpperCase();
 
-      const abkuerzungNormiert = abkuerzung.trim().toUpperCase();      
-
-      if (bedeutungen === null || bedeutungen === undefined) {
+    if (bedeutungen === null || bedeutungen === undefined) {
 
         // Für die Abkürzung ist noch überhaupt keine Bedeutung gespeichert
 
         bedeutungenArrayNeu = [ bedeutung ];
-        
-        gespeichertPromise = this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
+
+        await this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
 
       } else { // Für die Abkürzung war schon mindestens eine Bedeutung abgespeichert
-        
+
         bedeutungenArrayNeu = bedeutungen;
         bedeutungenArrayNeu.push(bedeutung);
 
-        gespeichertPromise = this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
+        await this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
       }
-
-      return gespeichertPromise;
-    });
   }
 
 }

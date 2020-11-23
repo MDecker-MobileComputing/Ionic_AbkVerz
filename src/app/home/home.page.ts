@@ -16,29 +16,28 @@ export class HomePage {
   /**
    * Konstruktor für Dependency Injection.
    */
-  constructor(private dialogToastHelferService: DialogToastHelferService,
-              private speicherService         : SpeicherService ) {}
+  constructor( private speicherService         : SpeicherService,
+               private dialogToastHelferService: DialogToastHelferService
+             ) {}
 
 
   /**
    * Event-Handler-Methode für Buttons zum Suchen nach einer Abkürzung.
    * <br><br>
-   * 
+   *
    * Das Eingabefeld mit der Abkürzung wird nur dann gelöscht, wenn die Suche erfolgreich war.
    */
-  private onSuchenButton() {
+  private async onSuchenButton() {
 
     if (this.abkuerzung === null || this.abkuerzung === undefined || this.abkuerzung.trim().length == 0 ) {
-     
+
       this.dialogToastHelferService.zeigeDialog("Ungültige Eingabe", "Bitte zu suchende Abkürzung eingeben!");
       return;
     }
 
-    const bedeutungenPromise = this.speicherService.holeBedeutungenFuerAbk(this.abkuerzung);
+    const bedeutungen = await this.speicherService.holeBedeutungenFuerAbk(this.abkuerzung);
 
-    bedeutungenPromise.then( (bedeutungen) => {
-
-      if (bedeutungen !== null && bedeutungen !== undefined) {
+    if (bedeutungen !== null && bedeutungen !== undefined) {
 
         const anzahl = bedeutungen.length;
 
@@ -58,14 +57,7 @@ export class HomePage {
       } else {
 
         this.dialogToastHelferService.zeigeDialog("Nichts gefunden", `Keine Bedeutungen für "${this.abkuerzung}" gefunden.` );
-
-      }      
-
-    }).catch( (fehler) => {
-
-      this.dialogToastHelferService.zeigeDialog("Fehler", `Fehler während Suche: ${fehler}`);
-
-    });
-  }
+      }
+    }
 
 }
