@@ -72,8 +72,10 @@ export class SpeicherService {
    *
    * @param bedeutung  Bedeutung für die Abkürzung, wird (nach Trimming) als Wert verwendet.
    *
+   * @return  Promise mit Anzahl der Bedeutungen, die nach Speichern von `bedeutung` für `abkuerzung`
+   *          gespeichert sind.
    */
-  public async speichereBedeutungFuerAbkuerzung(abkuerzung: string, bedeutung: string) {
+  public async speichereBedeutungFuerAbkuerzung(abkuerzung: string, bedeutung: string): Promise<number> {
 
     let bedeutungenArrayNeu = null;
 
@@ -89,12 +91,16 @@ export class SpeicherService {
 
         await this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
 
+        return 1;
+
       } else { // Für die Abkürzung war schon mindestens eine Bedeutung abgespeichert
 
         bedeutungenArrayNeu = bedeutungen;
         bedeutungenArrayNeu.push(bedeutung);
 
         await this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
+
+        return bedeutungenArrayNeu.length;
       }
   }
 

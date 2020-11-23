@@ -50,9 +50,9 @@ export class HinzufuegenPage {
     // Eigentliches Speichern
     try {
 
-       await this.speicherService.speichereBedeutungFuerAbkuerzung(this.abkuerzung, this.bedeutung);
+       const anzahlBedeutungen = await this.speicherService.speichereBedeutungFuerAbkuerzung(this.abkuerzung, this.bedeutung);
 
-       this.dialogToastHelferService.zeigeToast( "Erfolgreich gespeichert" );
+       this.dialogToastHelferService.zeigeToast( `Bedeutung Nr. ${anzahlBedeutungen} für Abkürzung "${this.abkuerzung}" gespeichert.` );
 
        this.abkuerzung = "";
        this.bedeutung  = "";
