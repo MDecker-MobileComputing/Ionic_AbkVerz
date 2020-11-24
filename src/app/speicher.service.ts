@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-
+import { AbkBedeutung } from './abk-bedeutung';
 
 /**
  * Service-Klasse kapselt Persistenz mit [ionic-storage]( https://ionicframework.com/docs/angular/storage#ionic-storage ).
@@ -114,13 +114,14 @@ export class SpeicherService {
    */
   public async holeAlleAbkuerzungenUndBedeutungen(): Promise<any> {
 
-    const ergebnisPromise = new Promise<String[]>( (resolveCallback, rejectCallback) => {
+    const ergebnisPromise = new Promise<AbkBedeutung[]>( (resolveCallback, rejectCallback) => {
 
-      const ergebnisArray: String[] = [];
+      const ergebnisArray: AbkBedeutung[] = [];
 
       this.storage.forEach( (wert, schluessel, nummer) => {
 
-        ergebnisArray.push(schluessel);
+        let abkBedeutung = new AbkBedeutung(schluessel, wert);
+        ergebnisArray.push(abkBedeutung);
 
       }).then( () => {
 

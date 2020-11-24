@@ -13,10 +13,17 @@
 
   &nbsp;
 
-  <ion-list *ngFor="let abk of abkBedeutungenArrayPromise | async">
+  <ion-list *ngFor="let abkBedeutung of abkBedeutungenArrayPromise | async">
+
       <ion-item>
-        <ion-label>{{abk}}</ion-label>
+        <ion-label>
+          <h2>{{abkBedeutung.abkuerzung}}:</h2>
+
+          <h3 *ngFor="let bedeutung of abkBedeutung.bedeutung">{{bedeutung}}</h3>
+
+        </ion-label>
       </ion-item>
+
   </ion-list>
 
 </ion-content>
