@@ -11,4 +11,12 @@
 
   <p>Anzahl gespeicherter Abkürzungen: {{anzahlFarbenPromise | async}}</p>
 
+  &nbsp;
+
+  <ion-list *ngFor="let abk of abkBedeutungenArrayPromise | async">
+      <ion-item>
+        <ion-label>{{abk}}</ion-label>
+      </ion-item>
+  </ion-list>
+
 </ion-content>

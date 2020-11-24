@@ -104,4 +104,32 @@ export class SpeicherService {
       }
   }
 
+
+  /**
+   * Methode holt alle Abkürzungen mit allen Bedeutungen.
+   *
+   * @return  Promise-Objekt für Array von Objekten. Jedes dieser Objekte enthält unter
+   *          dem Schlüssel `abkürzung` die Abkürzung, und unter dem Schüssel `bedeutung`
+   *          die zugehörige Bedeutung.
+   */
+  public async holeAlleAbkuerzungenUndBedeutungen(): Promise<any> {
+
+    const ergebnisPromise = new Promise<String[]>( (resolveCallback, rejectCallback) => {
+
+      const ergebnisArray: String[] = [];
+
+      this.storage.forEach( (wert, schluessel, nummer) => {
+
+        ergebnisArray.push(schluessel);
+
+      }).then( () => {
+
+        console.log(`ergebnisArray.length=${ergebnisArray.length}`);
+        resolveCallback(ergebnisArray);
+      });
+    });
+
+    return ergebnisPromise;
+  }
+
 }

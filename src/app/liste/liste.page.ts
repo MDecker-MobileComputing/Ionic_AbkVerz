@@ -17,6 +17,8 @@ export class ListePage {
    */
   private anzahlFarbenPromise : Promise<number>;
 
+  private abkBedeutungenArrayPromise: Promise<String[]>;
+
 
   /**
    * Konstruktor für Dependency Injection.
@@ -37,6 +39,8 @@ export class ListePage {
   private ionViewWillEnter() {
 
     this.anzahlFarbenPromise = this.speicherService.getAnzahlGespeicherteAbkuerzungen();
+
+    this.abkBedeutungenArrayPromise = this.speicherService.holeAlleAbkuerzungenUndBedeutungen();
   }
 
 }
