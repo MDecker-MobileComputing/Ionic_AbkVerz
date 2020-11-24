@@ -21,9 +21,22 @@ export class ListePage {
   /**
    * Konstruktor für Dependency Injection.
    */
-  constructor(private speicherService: SpeicherService) {
+  constructor(private speicherService: SpeicherService) {}
 
-    this.anzahlFarbenPromise = speicherService.getAnzahlGespeicherteAbkuerzungen();
+
+  /**
+   * Lifecycle-Methode, die Anzahl der gespeicherten Abkürzungen aktualisiert.
+   * Es wird die Lifecycle-Methode `ionViewWillEnter()`  statt `ionViewDidEnter()`
+   * überschrieben, weil so der Wert schon aktualisiert wird, bevor die Seite
+   * sichtbar wird (man sieht also nicht, wie die Zahl geändert wird).
+   * <br><br>
+   *
+   * Doku zu Lifecycle-Methoden von Ionic:
+   * https://ionicframework.com/docs/angular/lifecycle
+   */
+  private ionViewWillEnter() {
+
+    this.anzahlFarbenPromise = this.speicherService.getAnzahlGespeicherteAbkuerzungen();
   }
 
 }
