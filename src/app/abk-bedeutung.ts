@@ -1,12 +1,13 @@
 
 /**
- * Ein Objekt dieser Klasse kapselt ein Paar von Abkürzung und zugehöriger
- * Bedeutung.
+ * Ein Objekt dieser Klasse kapselt ein Paar von Abkürzung und zugehörige
+ * Bedeutungen.
  */
 export class AbkBedeutung {
 
   constructor( public abkuerzung: string,
-               public bedeutung : string ) {}
+               public bedeutungen : string[]
+             ) {}
 
 
 }
