@@ -106,7 +106,7 @@ export class SpeicherService {
 
 
   /**
-   * Methode holt alle Abkürzungen mit allen Bedeutungen.
+   * Methode holt alle Abkürzungen mit jeweils allen Bedeutungen.
    *
    * @return  Promise-Objekt für Array von Objekten. Jedes dieser Objekte enthält unter
    *          dem Schlüssel `abkürzung` die Abkürzung, und unter dem Schüssel `bedeutung`
@@ -125,7 +125,6 @@ export class SpeicherService {
 
       }).then( () => {
 
-        console.log(`ergebnisArray.length=${ergebnisArray.length}`);
         resolveCallback(ergebnisArray);
       });
     });
