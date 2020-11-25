@@ -43,6 +43,17 @@ export class ListePage {
    */
   private ionViewWillEnter() {
 
+    this.holeDatenVonSpeicherService();
+  }
+
+
+  /**
+   * Holt Daten von SpeicherService und kopiert sie in Member-Variablen.
+   * Muss in Lifecycle-Methode vor Laden der Seite aufgerufen werden und auch nach Löschen eines
+   * Listeneintrags (einer Abkürzung).
+   */
+  private holeDatenVonSpeicherService(): void {
+
     this.anzahlFarbenPromise = this.speicherService.getAnzahlGespeicherteAbkuerzungen();
 
     this.abkBedeutungenArrayPromise = this.speicherService.holeAlleAbkuerzungenUndBedeutungen();
@@ -65,6 +76,8 @@ export class ListePage {
 
             const erfolgsNachricht = `Abkürzung ${abkuerzung} wurde mit allen Bedeutungen gelöscht.`;
             this.dialogToastHelferService.zeigeToast(erfolgsNachricht);
+
+            this.holeDatenVonSpeicherService();
         }
     };
 
@@ -74,6 +87,8 @@ export class ListePage {
         handler: () => {
 
             this.dialogToastHelferService.zeigeToast("Löschen abgebrochen.");
+
+            //this.holeDatenVonSpeicherService();
         }
     };
 
