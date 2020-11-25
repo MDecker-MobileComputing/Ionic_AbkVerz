@@ -112,7 +112,7 @@ export class SpeicherService {
    *          dem Schlüssel `abkürzung` die Abkürzung, und unter dem Schüssel `bedeutung`
    *          die zugehörige Bedeutung.
    */
-  public async holeAlleAbkuerzungenUndBedeutungen(): Promise<any> {
+  public async holeAlleAbkuerzungenUndBedeutungen(): Promise<AbkBedeutung[]> {
 
     const ergebnisPromise = new Promise<AbkBedeutung[]>( (resolveCallback, rejectCallback) => {
 

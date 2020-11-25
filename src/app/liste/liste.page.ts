@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { SpeicherService } from '../speicher.service';
-import { DialogToastHelferService } from '../dialog-toast-helfer.service' ;
+import { DialogToastHelferService } from '../dialog-toast-helfer.service';
+import { AbkBedeutung } from '../abk-bedeutung';
 
 /**
  * Seite um alle Abkürzungen und die zugehörigen Bedeutungen anzuzeigen.
@@ -19,7 +20,7 @@ export class ListePage {
    */
   private anzahlFarbenPromise : Promise<number>;
 
-  private abkBedeutungenArrayPromise: Promise<String[]>;
+  private abkBedeutungenArrayPromise: Promise<AbkBedeutung[]>;
 
 
   /**
@@ -49,7 +50,7 @@ export class ListePage {
 
 
   /**
-   * Button-Event-Handler für Löschen.
+   * Button-Event-Handler für Löschen einer einzelnen Abkürzung.
    *
    * @param abkuerzung  Zu löschende Abkürzung
    */
