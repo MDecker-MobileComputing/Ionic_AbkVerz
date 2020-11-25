@@ -19,7 +19,7 @@
 
   <ion-list *ngFor="let eintrag of abkBedeutungenArrayPromise | async">
 
-    <ion-item-sliding>
+    <ion-item-sliding #slidingItem>
       <ion-item>
         <ion-label>
           <h2>{{eintrag.abkuerzung}}:</h2>
@@ -30,7 +30,7 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="onLoeschen(eintrag.abkuerzung)">Löschen</ion-item-option>
+        <ion-item-option color="danger" (click)="onLoeschen(eintrag.abkuerzung, slidingItem)">Löschen</ion-item-option>
       </ion-item-options>
 
     </ion-item-sliding>

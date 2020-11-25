@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, IonItemSliding } from '@ionic/angular';
 import { SpeicherService } from '../speicher.service';
 import { DialogToastHelferService } from '../dialog-toast-helfer.service';
 import { AbkBedeutung } from '../abk-bedeutung';
@@ -66,9 +66,14 @@ export class ListePage {
   /**
    * Button-Event-Handler für Löschen einer einzelnen Abkürzung.
    *
-   * @param abkuerzung  Zu löschende Abkürzung
+   * @param abkuerzung  Zu löschende Abkürzung.
+   *
+   * @param slider  Slider-Element, das im Fall des Abbruchs programmatisch zu schließen ist.
    */
-  private async onLoeschen(abkuerzung: string) {
+  private async onLoeschen(abkuerzung: string, slider: IonItemSliding) {
+
+    const slideRatio = await slider.getSlidingRatio();
+    console.log(`slideRatio: ${slideRatio}`);
 
     const jaButton = {
         text: "Weiter",
@@ -91,7 +96,7 @@ export class ListePage {
 
             this.dialogToastHelferService.zeigeToast("Löschen abgebrochen.");
 
-            //this.holeDatenVonSpeicherService();
+            slider.close();
         }
     };
 
