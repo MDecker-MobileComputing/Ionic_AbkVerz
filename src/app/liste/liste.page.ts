@@ -20,6 +20,9 @@ export class ListePage {
    */
   private anzahlFarbenPromise : Promise<number>;
 
+  /**
+   * Promise auf Array mit Objekten der Klasse `AbkBedeutung`, die in einer Liste dargestellt werden.
+   */
   private abkBedeutungenArrayPromise: Promise<AbkBedeutung[]>;
 
 
@@ -104,6 +107,5 @@ export class ListePage {
 
     await meinAlert.present();
   }
-
 
 }
