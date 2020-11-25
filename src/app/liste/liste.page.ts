@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { SpeicherService } from '../speicher.service';
+import { DialogToastHelferService } from '../dialog-toast-helfer.service' ;
 
 /**
  * Seite um alle Abkürzungen und die zugehörigen Bedeutungen anzuzeigen.
@@ -23,7 +25,9 @@ export class ListePage {
   /**
    * Konstruktor für Dependency Injection.
    */
-  constructor(private speicherService: SpeicherService) {}
+  constructor( private speicherService         : SpeicherService,
+               private alertCtrl               : AlertController,
+               private dialogToastHelferService: DialogToastHelferService ) {}
 
 
   /**
@@ -42,5 +46,48 @@ export class ListePage {
 
     this.abkBedeutungenArrayPromise = this.speicherService.holeAlleAbkuerzungenUndBedeutungen();
   }
+
+
+  /**
+   * Button-Event-Handler für Löschen.
+   *
+   * @param abkuerzung  Zu löschende Abkürzung
+   */
+  private async onLoeschen(abkuerzung: string) {
+
+    const jaButton = {
+        text: "Weiter",
+        handler: async () => {
+
+            console.log(`Sollte jetzt ${abkuerzung} löschen.`);
+            await this.speicherService.abkuerzungLoeschen(abkuerzung);
+
+            const erfolgsNachricht = `Abkürzung ${abkuerzung} wurde mit allen Bedeutungen gelöscht.`;
+            this.dialogToastHelferService.zeigeToast(erfolgsNachricht);
+        }
+    };
+
+    const abbrechenButton = {
+        text: "Abbrechen",
+        role: "Cancel",
+        handler: () => {
+
+            this.dialogToastHelferService.zeigeToast("Löschen abgebrochen.");
+        }
+    };
+
+    const sicherheitsfrage = `Wollen Sie die Abkürzung "${abkuerzung}" mit allen Bedeutungen wirklich löschen?`;
+
+    const meinAlert =
+          await this.alertCtrl.create({
+              header  : "Sicherheitsfrage",
+              message : sicherheitsfrage,
+              backdropDismiss: false,
+              buttons : [ jaButton, abbrechenButton ]
+          });
+
+    await meinAlert.present();
+  }
+
 
 }

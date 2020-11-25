@@ -9,20 +9,31 @@
 
 <ion-content>
 
-  <p>Anzahl gespeicherter Abkürzungen: {{anzahlFarbenPromise | async}}</p>
+  <h2>Anzahl gespeicherter Abkürzungen: {{anzahlFarbenPromise | async}}</h2>
 
   &nbsp;
 
-  <ion-list *ngFor="let abkBedeutung of abkBedeutungenArrayPromise | async">
+  <p>Listeneintrag zum Löschen nach links ziehen.</p>
 
+  &nbsp;
+
+  <ion-list *ngFor="let eintrag of abkBedeutungenArrayPromise | async">
+
+    <ion-item-sliding>
       <ion-item>
         <ion-label>
-          <h2>{{abkBedeutung.abkuerzung}}:</h2>
+          <h2>{{eintrag.abkuerzung}}:</h2>
 
-          <h3 *ngFor="let bedeutung of abkBedeutung.bedeutungen">{{bedeutung}}</h3>
+          <h3 *ngFor="let bedeutung of eintrag.bedeutungen">{{bedeutung}}</h3>
 
         </ion-label>
       </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="onLoeschen(eintrag.abkuerzung)">Löschen</ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
 
   </ion-list>
 
