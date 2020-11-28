@@ -72,9 +72,6 @@ export class ListePage {
    */
   private async onLoeschen(abkuerzung: string, slider: IonItemSliding) {
 
-    const slideRatio = await slider.getSlidingRatio();
-    console.log(`slideRatio: ${slideRatio}`);
-
     const jaButton = {
         text: "Weiter",
         handler: async () => {
