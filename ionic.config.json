@@ -1,5 +1,7 @@
 {
   "name": "AbkVerz",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
