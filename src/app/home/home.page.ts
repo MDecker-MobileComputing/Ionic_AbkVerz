@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SpeicherService } from '../speicher.service';
-import { DialogToastHelferService } from '../dialog-toast-helfer.service' ;
+import { DialogToastHelferService } from '../dialog-toast-helfer.service';
 
 @Component({
   selector: 'app-home',
