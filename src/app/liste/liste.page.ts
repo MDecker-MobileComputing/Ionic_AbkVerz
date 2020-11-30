@@ -101,10 +101,10 @@ export class ListePage {
 
     const meinAlert =
           await this.alertCtrl.create({
-              header  : "Sicherheitsfrage",
-              message : sicherheitsfrage,
+              header         : "Sicherheitsfrage",
+              message        : sicherheitsfrage,
               backdropDismiss: false,
-              buttons : [ jaButton, abbrechenButton ]
+              buttons        : [ jaButton, abbrechenButton ]
           });
 
     await meinAlert.present();
