@@ -15,10 +15,9 @@ import { AbkBedeutung } from '../abk-bedeutung';
 export class ListePage {
 
   /**
-   * Asynchrone Funktion getAnzahlGespeicherteFarben() liefert Promise zurück, der bei Interpolation
-   * in UI durch Pipe "async" aufgelöst wird.
+   * Promise für Anzahl der Abkürzungen.
    */
-  private anzahlFarbenPromise : Promise<number>;
+  private anzahlAbkuerzungenPromise : Promise<number>;
 
   /**
    * Promise auf Array mit Objekten der Klasse `AbkBedeutung`, die in einer Liste dargestellt werden.
@@ -57,7 +56,7 @@ export class ListePage {
    */
   private holeDatenVonSpeicherService(): void {
 
-    this.anzahlFarbenPromise = this.speicherService.getAnzahlGespeicherteAbkuerzungen();
+    this.anzahlAbkuerzungenPromise  = this.speicherService.getAnzahlGespeicherteAbkuerzungen();
 
     this.abkBedeutungenArrayPromise = this.speicherService.holeAlleAbkuerzungenUndBedeutungen();
   }
