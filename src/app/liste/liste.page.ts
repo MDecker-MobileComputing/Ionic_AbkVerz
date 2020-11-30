@@ -78,7 +78,7 @@ export class ListePage {
             console.log(`Sollte jetzt ${abkuerzung} löschen.`);
             await this.speicherService.abkuerzungLoeschen(abkuerzung);
 
-            const erfolgsNachricht = `Abkürzung ${abkuerzung} wurde mit allen Bedeutungen gelöscht.`;
+            const erfolgsNachricht = `Abkürzung "${abkuerzung}" wurde mit allen Bedeutungen gelöscht.`;
             this.dialogToastHelferService.zeigeToast(erfolgsNachricht);
 
             this.holeDatenVonSpeicherService();
