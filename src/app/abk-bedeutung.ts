@@ -9,5 +9,4 @@ export class AbkBedeutung {
                public bedeutungen : string[]
              ) {}
 
-
 }
