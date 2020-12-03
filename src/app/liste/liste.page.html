@@ -17,9 +17,9 @@
 
   &nbsp;
 
-  <ion-list *ngFor="let eintrag of abkBedeutungenArrayPromise | async">
+  <ion-list>
 
-    <ion-item-sliding #slidingItem>
+    <ion-item-sliding *ngFor="let eintrag of abkBedeutungenArrayPromise | async" #slidingItem>
       <ion-item>
         <ion-label>
           <h2>{{eintrag.abkuerzung}}:</h2>
