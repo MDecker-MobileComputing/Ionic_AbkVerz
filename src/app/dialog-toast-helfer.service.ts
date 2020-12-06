@@ -52,5 +52,4 @@ export class DialogToastHelferService {
     await toast.present();
   }
 
-
 }
