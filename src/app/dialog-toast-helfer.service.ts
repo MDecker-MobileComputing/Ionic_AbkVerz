@@ -15,7 +15,6 @@ export class DialogToastHelferService {
   constructor( private alertCtrl      : AlertController,
                private toastController: ToastController ) {}
 
-
   /**
    * Alert/Dialog anzeigen.
    *
