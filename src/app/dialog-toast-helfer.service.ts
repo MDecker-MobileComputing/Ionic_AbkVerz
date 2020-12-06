@@ -12,6 +12,9 @@ import { AlertController, ToastController } from '@ionic/angular';
 })
 export class DialogToastHelferService {
 
+  /**
+   * Konstruktor für *Dependency Injection*.
+   */  
   constructor( private alertCtrl      : AlertController,
                private toastController: ToastController ) {}
 
