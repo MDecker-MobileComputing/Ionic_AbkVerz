@@ -18,9 +18,14 @@ with [Ionic Storage](https://ionicframework.com/docs/angular/storage#ionic-stora
 <br>
 
 ----
+
 ## Run the app locally ##
 
-Prerequisite: NPM package [`@ionic/cli`](https://www.npmjs.com/package/@ionic/cli) must be installed globally.
+<br>
+
+**Prerequisite**
+
+NPM package [`@ionic/cli`](https://www.npmjs.com/package/@ionic/cli) must be installed globally:, `npm install -g @ionic/cli`
 
 <br>
 
@@ -30,7 +35,7 @@ Prerequisite: NPM package [`@ionic/cli`](https://www.npmjs.com/package/@ionic/cl
 
 2. Open shell in root folder of cloned repository and execute `npm install`.
 
-3. To run app locall in browser execute `ionic serve`.
+3. To run app locally in browser execute either `ionic serve` or `ionic serve --lab` .
 
 <br>
 
