@@ -1,7 +1,8 @@
 {
   "name": "AbkVerz",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
