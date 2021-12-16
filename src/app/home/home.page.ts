@@ -35,17 +35,17 @@ export class HomePage {
       return;
     }
 
-    const bedeutungen = await this.speicherService.holeBedeutungenFuerAbk(this.abkuerzung);
+    const bedeutungenArray = await this.speicherService.holeBedeutungenFuerAbk(this.abkuerzung);
 
-    if (bedeutungen !== null && bedeutungen !== undefined) {
+    if (bedeutungenArray !== null && bedeutungenArray !== undefined) {
 
-        const anzahl = bedeutungen.length;
+        const anzahl = bedeutungenArray.length;
 
         let bedeutungenString = "";
         const lastIndex = anzahl - 1;
         for (let i = 0; i < anzahl; i++) {
 
-          bedeutungenString += bedeutungen[i]; + "<br><br>";
+          bedeutungenString += bedeutungenArray[i]; + "<br><br>";
 
           if (anzahl > 0 && i !== lastIndex) { bedeutungenString += "<br><br>"; }
         }
