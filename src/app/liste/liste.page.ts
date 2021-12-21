@@ -35,7 +35,7 @@ export class ListePage {
 
   /**
    * Lifecycle-Methode, die Anzahl der gespeicherten Abkürzungen aktualisiert.
-   * Es wird die Lifecycle-Methode `ionViewWillEnter()`  statt `ionViewDidEnter()`
+   * Es wird die Lifecycle-Methode `ionViewWillEnter()` statt `ionViewDidEnter()`
    * überschrieben, weil so der Wert schon aktualisiert wird, bevor die Seite
    * sichtbar wird (man sieht also nicht, wie die Zahl geändert wird).
    * <br><br>
