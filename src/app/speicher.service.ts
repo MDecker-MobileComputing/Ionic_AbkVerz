@@ -79,11 +79,11 @@ export class SpeicherService {
 
     let bedeutungenArrayNeu = null;
 
-    let bedeutungen = await this.holeBedeutungenFuerAbk(abkuerzung);
+    let bedeutungenArrayAlt = await this.holeBedeutungenFuerAbk(abkuerzung);
 
     const abkuerzungNormiert = abkuerzung.trim().toUpperCase();
 
-    if (bedeutungen === null || bedeutungen === undefined) {
+    if (bedeutungenArrayAlt === null || bedeutungenArrayAlt === undefined) {
 
         // Für die Abkürzung ist noch überhaupt keine Bedeutung gespeichert
 
@@ -95,7 +95,7 @@ export class SpeicherService {
 
       } else { // Für die Abkürzung war schon mindestens eine Bedeutung abgespeichert
 
-        bedeutungenArrayNeu = bedeutungen;
+        bedeutungenArrayNeu = bedeutungenArrayAlt;
         bedeutungenArrayNeu.push(bedeutung);
 
         await this.storage.set(abkuerzungNormiert, bedeutungenArrayNeu);
