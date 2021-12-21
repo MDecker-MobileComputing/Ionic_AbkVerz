@@ -35,7 +35,7 @@ export class SpeicherService {
    *
    * @return  Promise mit Anzahl der aktuell gespeicherten Abkürzungen.
    */
-  public async getAnzahlGespeicherteAbkuerzungen(): Promise<number> {
+  public getAnzahlGespeicherteAbkuerzungen(): Promise<number> {
 
     let anzahlPromise = this.storage.length();
 
@@ -53,7 +53,7 @@ export class SpeicherService {
    *          Wenn keine Bedeutungen für die Abkürzung gefunden wurden, dann ist der Wert `null`
    *          (aber kein Promise, der in Zustand "rejected" auflöst).
    */
-  public async holeBedeutungenFuerAbk(abkuerzung: string): Promise<any> {
+  public holeBedeutungenFuerAbk(abkuerzung: string): Promise<any> {
 
     const abkuerzungNormiert = abkuerzung.trim().toUpperCase();
 
@@ -112,7 +112,7 @@ export class SpeicherService {
    *          dem Schlüssel `abkürzung` die Abkürzung, und unter dem Schüssel `bedeutung`
    *          die zugehörige Bedeutung.
    */
-  public async holeAlleAbkuerzungenUndBedeutungen(): Promise<AbkBedeutung[]> {
+  public holeAlleAbkuerzungenUndBedeutungen(): Promise<AbkBedeutung[]> {
 
     const ergebnisPromise = new Promise<AbkBedeutung[]>( (resolveCallback, rejectCallback) => {
 
