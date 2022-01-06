@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SpeicherService } from '../speicher.service';
 import { DialogToastHelferService } from '../dialog-toast-helfer.service' ;
 
 @Component({
@@ -17,12 +18,13 @@ export class LoeschbedeutungPage  {
     /**
    * Konstruktor für Dependency Injection.
    */
-  constructor(private dialogToastHelferService: DialogToastHelferService) { }
+  constructor(private dialogToastHelferService: DialogToastHelferService,
+              private speicherService         : SpeicherService           ) { }
 
   /**
    * Event-Handler für Button "Bedeutung löschen".
    */
-  private onBedeutungLoeschen() {
+  private async onBedeutungLoeschen() {
 
     const abkuerzTrimmed   = this.abkuerzung.trim();
     const bedeutungTrimmed = this.bedeutung.trim();
@@ -38,8 +40,12 @@ export class LoeschbedeutungPage  {
       return;
     }
 
+
     const str = `Sollte jetzt Bedeutung "${bedeutungTrimmed}" von Abkürzung "${abkuerzTrimmed}" löschen, ist aber noch nicht implementiert.`;
     this.dialogToastHelferService.zeigeDialog("Fehler", str );
+
+    this.abkuerzung = "";
+    this.bedeutung  = "";
   }
 
 }
