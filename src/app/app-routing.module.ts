@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'hilfe',
     loadChildren: () => import('./hilfe/hilfe.module').then( m => m.HilfePageModule)
   },
+  {
+    path: 'loeschbedeutung',
+    loadChildren: () => import('./loeschbedeutung/loeschbedeutung.module').then( m => m.LoeschbedeutungPageModule)
+  },
 ];
 
 @NgModule({
