@@ -40,9 +40,13 @@ export class LoeschbedeutungPage  {
       return;
     }
 
-
     const str = `Sollte jetzt Bedeutung "${bedeutungTrimmed}" von Abkürzung "${abkuerzTrimmed}" löschen, ist aber noch nicht implementiert.`;
     this.dialogToastHelferService.zeigeDialog("Fehler", str );
+
+    /*
+    const ergebnis = await this.speicherService.bedeutungLoeschen(abkuerzTrimmed, bedeutungTrimmed);
+    this.dialogToastHelferService.zeigeDialog("Ergebnis", ergebnis );
+    */
 
     this.abkuerzung = "";
     this.bedeutung  = "";

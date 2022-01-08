@@ -143,4 +143,18 @@ export class SpeicherService {
     await this.storage.remove(abkuerzung);
   }
 
+
+  /**
+   * Einzelne Bedeutung einer bestimmten Abkürzung löschen.
+   * 
+   * @param abkuerzung Abkürzung, zu der die zu löschende Bedeutung gehört.
+   * @param bedeutung Bedeutung, die gelöscht werden soll.
+   */
+  public async bedeutungLoeschen(abkuerzung: string, bedeutung: string): Promise<string> {
+
+    // Als Übungsaufgabe zu implementieren
+
+    return "";
+  }
+
 }
