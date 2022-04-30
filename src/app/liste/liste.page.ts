@@ -17,12 +17,12 @@ export class ListePage {
   /**
    * Promise für Anzahl der Abkürzungen.
    */
-  private anzahlAbkuerzungenPromise : Promise<number>;
+  public anzahlAbkuerzungenPromise : Promise<number>;
 
   /**
    * Promise auf Array mit Objekten der Klasse `AbkBedeutung`, die in einer Liste dargestellt werden.
    */
-  private abkBedeutungenArrayPromise: Promise<AbkBedeutung[]>;
+  public abkBedeutungenArrayPromise: Promise<AbkBedeutung[]>;
 
 
   /**
@@ -69,7 +69,7 @@ export class ListePage {
    *
    * @param slider  Slider-Element, das im Fall des Abbruchs programmatisch zu schließen ist.
    */
-  private async onLoeschen(abkuerzung: string, slider: IonItemSliding) {
+  public async onLoeschen(abkuerzung: string, slider: IonItemSliding) {
 
     const jaButton = {
         text: "Weiter",

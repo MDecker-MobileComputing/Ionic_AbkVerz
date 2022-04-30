@@ -1,0 +1,1 @@
+{"ast":null,"code":"/**\r\n * Ein Objekt dieser Klasse kapselt ein Paar von Abkürzung (Key) und Array mit\r\n * zugehörigen Bedeutungen (Value für Key).\r\n */\nexport class AbkBedeutung {\n  constructor(abkuerzung, bedeutungen) {\n    this.abkuerzung = abkuerzung;\n    this.bedeutungen = bedeutungen;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

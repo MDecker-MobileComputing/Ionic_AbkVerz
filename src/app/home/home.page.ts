@@ -10,7 +10,7 @@ import { DialogToastHelferService } from '../dialog-toast-helfer.service';
 export class HomePage {
 
   /** Abkürzung, für die die Bedeutungen gesucht werden sollen; wird mit Two-Way-Binding an `ion-input`-Element gebunden. */
-  private abkuerzung: string = "";
+  public abkuerzung: string = "";
 
 
   /**
@@ -27,7 +27,7 @@ export class HomePage {
    *
    * Das Eingabefeld mit der Abkürzung wird nur dann gelöscht, wenn die Suche erfolgreich war.
    */
-  private async onSuchenButton() {
+  public async onSuchenButton() {
 
     if (this.abkuerzung === null || this.abkuerzung === undefined || this.abkuerzung.trim().length == 0 ) {
 
