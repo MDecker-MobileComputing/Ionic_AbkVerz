@@ -33,7 +33,7 @@ export class HinzufuegenPage {
   /**
    * Event-Handler-Methode für Button "Hinzufügen".
    */
-  private async onHinzufuegenButton() {
+  public async onHinzufuegenButton() {
 
     if (this.abkuerzung.trim().length === 0) {
 
