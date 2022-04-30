@@ -16,10 +16,10 @@ import { DialogToastHelferService } from '../dialog-toast-helfer.service' ;
 export class HinzufuegenPage {
 
   /** Variable wird mit Two-Way-Binding an <ion-input> gebunden. */
-  private abkuerzung: string = "";
+  public abkuerzung: string = "";
 
   /** Variable wird mit Two-Way-Binding an <ion-input> gebunden. */
-  private bedeutung: string = "" ;
+  public bedeutung: string = "" ;
 
 
   /**
@@ -33,7 +33,7 @@ export class HinzufuegenPage {
   /**
    * Event-Handler-Methode für Button "Hinzufügen".
    */
-  private async onHinzufuegenButton() {
+  public async onHinzufuegenButton() {
 
     if (this.abkuerzung.trim().length === 0) {
 
