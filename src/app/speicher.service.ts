@@ -17,13 +17,6 @@ import { AbkBedeutung } from './abk-bedeutung';
  * Beispiele:
  * * "OOO": [ "Out of Office", "Out of Order" ]
  * * "AVD": [ "Android Virtual Device (Emulator-Instanz" ]
- * 
- * <br><br>
- * 
- * Änderungen für Migration auf Ionic 6 (April 2022):
- * * Neue Abhängigkeit: `npm install @ionic/storage-angular`
- * * im Konstruktor dieser Klasse muss die Methode `create()` vom `storage`-Objekt aufgerufen werden.
- * * in Datei `app.module.ts` muss `IonicStorageModule` aus dem Paket `@ionic/storage-angular` importiert werden.
  */
 @Injectable({
   providedIn: 'root'
