@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-hilfe',
@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./hilfe.page.scss'],
 })
 export class HilfePage {
-
-  constructor() { }
 
 }

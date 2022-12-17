@@ -12,16 +12,16 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'liste',
-    loadChildren: () => import('./liste/liste.module').then( m => m.ListePageModule)
-  },
-  {
     path: 'hinzufuegen',
     loadChildren: () => import('./hinzufuegen/hinzufuegen.module').then( m => m.HinzufuegenPageModule)
   },
   {
     path: 'hilfe',
     loadChildren: () => import('./hilfe/hilfe.module').then( m => m.HilfePageModule)
+  },
+  {
+    path: 'liste',
+    loadChildren: () => import('./liste/liste.module').then( m => m.ListePageModule)
   },
   {
     path: 'loeschbedeutung',

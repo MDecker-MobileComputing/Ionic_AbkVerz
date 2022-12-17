@@ -17,12 +17,12 @@ export class ListePage {
   /**
    * Promise für Anzahl der Abkürzungen.
    */
-  public anzahlAbkuerzungenPromise : Promise<number>;
+  public anzahlAbkuerzungenPromise : Promise<number> = new Promise( (resolve, reject) => reject() );
 
   /**
    * Promise auf Array mit Objekten der Klasse `AbkBedeutung`, die in einer Liste dargestellt werden.
    */
-  public abkBedeutungenArrayPromise: Promise<AbkBedeutung[]>;
+  public abkBedeutungenArrayPromise: Promise<AbkBedeutung[]> = new Promise( (resolve, reject) => reject() );
 
 
   /**
