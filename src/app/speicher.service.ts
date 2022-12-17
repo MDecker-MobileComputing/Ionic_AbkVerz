@@ -6,7 +6,7 @@ import { AbkBedeutung } from './abk-bedeutung';
  * Service-Klasse kapselt Persistenz mit [ionic-storage]( https://ionicframework.com/docs/angular/storage#ionic-storage ).
  * <br><br>
  *
- * "ionic-storage" Projekt hinzufügen: `npm install --save @ionic/storage`
+ * "ionic-storage" Projekt hinzufügen: `npm install @ionic/storage-angular`
  * <br><br>
  *
  * "ionic storage" stellt einen Key-Value-Speicher zu Verfügung.
