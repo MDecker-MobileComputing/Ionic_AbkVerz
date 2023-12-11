@@ -14,12 +14,16 @@ export class DialogToastHelferService {
 
   /**
    * Konstruktor für *Dependency Injection*.
-   */  
+   */
   constructor( private alertCtrl      : AlertController,
                private toastController: ToastController ) {}
 
   /**
    * Alert/Dialog anzeigen.
+   * <br><br>
+   * Für die Anzeige von "\n" in {@param nachricht} wurde eine CSS-Regel
+   * mit "white-space: pre-line" in der globalen CSS-Datei ("src/global.scss")
+   * definiert.
    *
    * @param title  Dialog-Titel, z.B. "Fehler" oder "Ungültige Eingabe".
    *

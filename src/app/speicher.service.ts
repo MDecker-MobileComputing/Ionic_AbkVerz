@@ -56,7 +56,7 @@ export class SpeicherService {
    *          Wenn keine Bedeutungen für die Abkürzung gefunden wurden, dann ist der Wert `null`
    *          (aber kein Promise, der in Zustand "rejected" auflöst).
    */
-  public holeBedeutungenFuerAbk(abkuerzung: string): Promise<any> {
+  public holeBedeutungenFuerAbk(abkuerzung: string): Promise<string[]> {
 
     const abkuerzungNormiert = abkuerzung.trim().toUpperCase();
 
@@ -149,7 +149,7 @@ export class SpeicherService {
 
   /**
    * Einzelne Bedeutung einer bestimmten Abkürzung löschen.
-   * 
+   *
    * @param abkuerzung Abkürzung, zu der die zu löschende Bedeutung gehört.
    * @param bedeutung Bedeutung, die gelöscht werden soll.
    */

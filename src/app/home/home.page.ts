@@ -45,9 +45,9 @@ export class HomePage {
         const lastIndex = anzahl - 1;
         for (let i = 0; i < anzahl; i++) {
 
-          bedeutungenString += bedeutungenArray[i]; + "<br><br>";
+          bedeutungenString += bedeutungenArray[i] + "\n";
 
-          if (anzahl > 0 && i !== lastIndex) { bedeutungenString += "<br><br>"; }
+          if (anzahl > 0 && i !== lastIndex) { bedeutungenString += "\n"; }
         }
 
         this.dialogToastHelferService.zeigeDialog(`Ergebnis für "${this.abkuerzung}" (${anzahl}):`, bedeutungenString );

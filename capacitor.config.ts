@@ -4,7 +4,9 @@ const config: CapacitorConfig = {
   appId: 'de.mide.ionic.abkverz',
   appName: 'AbkVerz',
   webDir: 'www',
-  bundledWebRuntime: false
+  server: {
+    androidScheme: 'https'
+  }
 };
 
 export default config;

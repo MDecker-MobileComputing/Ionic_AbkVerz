@@ -17,13 +17,13 @@ export class ListePage {
   /**
    * Promise für Anzahl der Abkürzungen.
    */
-  public anzahlAbkuerzungenPromise : Promise<number> = new Promise( (resolve, reject) => reject() );
+  public anzahlAbkuerzungenPromise : Promise<number> = Promise.resolve(0);
 
   /**
    * Promise auf Array mit Objekten der Klasse `AbkBedeutung`, die in einer Liste dargestellt werden.
    */
-  public abkBedeutungenArrayPromise: Promise<AbkBedeutung[]> = new Promise( (resolve, reject) => reject() );
 
+  public abkBedeutungenArrayPromise: Promise<AbkBedeutung[]> = Promise.resolve([]);
 
   /**
    * Konstruktor für Dependency Injection.

@@ -12,12 +12,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'hinzufuegen',
-    loadChildren: () => import('./hinzufuegen/hinzufuegen.module').then( m => m.HinzufuegenPageModule)
-  },
-  {
     path: 'hilfe',
     loadChildren: () => import('./hilfe/hilfe.module').then( m => m.HilfePageModule)
+  },
+  {
+    path: 'hinzufuegen',
+    loadChildren: () => import('./hinzufuegen/hinzufuegen.module').then( m => m.HinzufuegenPageModule)
   },
   {
     path: 'liste',

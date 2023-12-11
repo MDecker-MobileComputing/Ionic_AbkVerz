@@ -7,4 +7,4 @@ export class AbkBedeutung {
     constructor( public abkuerzung : string,
                  public bedeutungen: string[]
                ) {}
-  }
+}
