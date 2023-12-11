@@ -50,13 +50,15 @@ export class HomePage {
           if (anzahl > 0 && i !== lastIndex) { bedeutungenString += "\n"; }
         }
 
-        this.dialogToastHelferService.zeigeDialog(`Ergebnis für "${this.abkuerzung}" (${anzahl}):`, bedeutungenString );
+        const titel = `Ergebnis für "${this.abkuerzung}" (${anzahl}):`;
+        this.dialogToastHelferService.zeigeDialog(titel, bedeutungenString );
 
         this.abkuerzung = "";
 
       } else {
 
-        this.dialogToastHelferService.zeigeDialog("Nichts gefunden", `Keine Bedeutungen für "${this.abkuerzung}" gefunden.` );
+        const nachricht = `Keine Bedeutungen für "${this.abkuerzung}" gefunden.`;
+        this.dialogToastHelferService.zeigeDialog("Nichts gefunden",  nachricht);
       }
     }
 
