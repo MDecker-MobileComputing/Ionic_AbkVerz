@@ -20,12 +20,12 @@ const routes: Routes = [
     loadChildren: () => import('./hinzufuegen/hinzufuegen.module').then( m => m.HinzufuegenPageModule)
   },
   {
-    path: 'liste',
-    loadChildren: () => import('./liste/liste.module').then( m => m.ListePageModule)
-  },
-  {
     path: 'loeschbedeutung',
     loadChildren: () => import('./loeschbedeutung/loeschbedeutung.module').then( m => m.LoeschbedeutungPageModule)
+  },
+  {
+    path: 'liste',
+    loadChildren: () => import('./liste/liste.module').then( m => m.ListePageModule)
   },
 ];
 
