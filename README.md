@@ -2,8 +2,9 @@
 
 <br>
 
-Simple [Ionic](https://ionicframework.com) app to demonstrate storing data
-with [Ionic Storage](https://ionicframework.com/docs/angular/storage#ionic-storage).
+Diese Repository enthält ein [Ionic](https://ionicframework.com/)/Angular-Projekt für eine mobile App.
+Die App demonstriert die Verwendung von [Ionic Storage](https://ionicframework.com/docs/angular/storage#ionic-storage)
+anhand der Speicherung von Abkürzungen.
 
 <br>
 
@@ -18,28 +19,6 @@ with [Ionic Storage](https://ionicframework.com/docs/angular/storage#ionic-stora
 ![Screenshot 3](screenshot_3.png) &nbsp; ![Screenshot 4](screenshot_4.png)
 
 ![Screenshot 5](screenshot_5.png)
-
-<br>
-
-----
-
-## Run the app locally ##
-
-<br>
-
-**Prerequisite**
-
-NPM package [`@ionic/cli`](https://www.npmjs.com/package/@ionic/cli) must be installed globally:, `npm install -g @ionic/cli`
-
-<br>
-
-**Steps:**
-
-1. Clone the repository.
-
-2. Open shell in root folder of cloned repository and execute `npm install`.
-
-3. To run app locally in browser execute either `ionic serve` or `ionic serve --lab` .
 
 <br>
 
