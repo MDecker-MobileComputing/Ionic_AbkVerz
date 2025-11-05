@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-hilfe',
   templateUrl: './hilfe.page.html',
   styleUrls: ['./hilfe.page.scss'],
+  standalone: false
 })
 export class HilfePage {}

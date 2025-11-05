@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
-import { SpeicherService } from '../speicher.service';
-import { DialogToastHelferService } from '../dialog-toast-helfer.service';
+import { SpeicherService } from '../speicher-service';
+import { DialogToastHelferService } from '../dialog-toast-helfer-service';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+  standalone: false,
 })
 export class HomePage {
 
-  /** Abkürzung, für die die Bedeutungen gesucht werden sollen; wird mit Two-Way-Binding an `ion-input`-Element gebunden. */
+  /**
+   * Abkürzung, für die die Bedeutungen gesucht werden sollen;
+   * wird mit Two-Way-Binding an `ion-input`-Element gebunden.
+   */
   public abkuerzung: string = "";
 
 
@@ -45,9 +50,9 @@ export class HomePage {
         const lastIndex = anzahl - 1;
         for (let i = 0; i < anzahl; i++) {
 
-          bedeutungenString += bedeutungenArray[i] + "\n";
+          bedeutungenString += bedeutungenArray[i];
 
-          if (anzahl > 0 && i !== lastIndex) { bedeutungenString += "\n"; }
+          if (anzahl > 0 && i !== lastIndex) { bedeutungenString += ", "; }
         }
 
         const titel = `Ergebnis für "${this.abkuerzung}" (${anzahl}):`;

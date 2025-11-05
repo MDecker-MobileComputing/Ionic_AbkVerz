@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { SpeicherService } from '../speicher.service';
-import { DialogToastHelferService } from '../dialog-toast-helfer.service' ;
+import { SpeicherService } from '../speicher-service';
+import { DialogToastHelferService } from '../dialog-toast-helfer-service';
+
 
 /**
  * Page-Klasse zum Hinzufügen von neuen Bedeutungen zu bereits bekannten oder neuen Abkürzungen.
@@ -12,8 +13,9 @@ import { DialogToastHelferService } from '../dialog-toast-helfer.service' ;
   selector: 'app-hinzufuegen',
   templateUrl: './hinzufuegen.page.html',
   styleUrls: ['./hinzufuegen.page.scss'],
+  standalone: false
 })
-export class HinzufuegenPage {
+export class HinzufuegenPage  {
 
   /** Variable wird mit Two-Way-Binding an <ion-input> gebunden. */
   public abkuerzung: string = "";

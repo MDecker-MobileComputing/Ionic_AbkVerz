@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { SpeicherService } from '../speicher.service';
-import { DialogToastHelferService } from '../dialog-toast-helfer.service' ;
+import { SpeicherService } from '../speicher-service';
+import { DialogToastHelferService } from '../dialog-toast-helfer-service' ;
+
 
 @Component({
   selector: 'app-loeschbedeutung',
   templateUrl: './loeschbedeutung.page.html',
   styleUrls: ['./loeschbedeutung.page.scss'],
+  standalone: false
 })
-export class LoeschbedeutungPage  {
+export class LoeschbedeutungPage {
 
   /** Variable wird mit Two-Way-Binding an <ion-input> gebunden. */
   public abkuerzung: string = "";

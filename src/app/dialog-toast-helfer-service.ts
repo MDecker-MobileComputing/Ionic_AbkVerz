@@ -8,7 +8,7 @@ import { AlertController, ToastController } from '@ionic/angular';
  * Für Fehlermeldungen sollten Dialoge verwendet werden.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DialogToastHelferService {
 

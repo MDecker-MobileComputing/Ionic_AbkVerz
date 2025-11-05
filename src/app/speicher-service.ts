@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { AbkBedeutung } from './abk-bedeutung';
 
+
 /**
  * Service-Klasse kapselt Persistenz mit [ionic-storage]( https://ionicframework.com/docs/angular/storage#ionic-storage ).
  * <br><br>
@@ -19,9 +20,10 @@ import { AbkBedeutung } from './abk-bedeutung';
  * * "AVD": [ "Android Virtual Device (Emulator-Instanz" ]
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SpeicherService {
+
 
   /**
    * Konstruktor für Dependency Injection.

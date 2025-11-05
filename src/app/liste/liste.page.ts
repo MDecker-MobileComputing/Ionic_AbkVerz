@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { AlertController, IonItemSliding } from '@ionic/angular';
-import { SpeicherService } from '../speicher.service';
-import { DialogToastHelferService } from '../dialog-toast-helfer.service';
+import { SpeicherService } from '../speicher-service';
+import { DialogToastHelferService } from '../dialog-toast-helfer-service';
 import { AbkBedeutung } from '../abk-bedeutung';
+
 
 /**
  * Seite um alle Abkürzungen und die zugehörigen Bedeutungen anzuzeigen.
@@ -11,6 +12,7 @@ import { AbkBedeutung } from '../abk-bedeutung';
   selector: 'app-liste',
   templateUrl: './liste.page.html',
   styleUrls: ['./liste.page.scss'],
+  standalone: false
 })
 export class ListePage {
 
@@ -24,6 +26,7 @@ export class ListePage {
    */
 
   public abkBedeutungenArrayPromise: Promise<AbkBedeutung[]> = Promise.resolve([]);
+
 
   /**
    * Konstruktor für Dependency Injection.
