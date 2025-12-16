@@ -14,13 +14,11 @@
   </p>
 
   <ion-item>
-    <ion-label position="fixed">Abkürzung:</ion-label>
-    <ion-input type="text" [(ngModel)]="abkuerzung"></ion-input>
+    <ion-input label="Abkürzung" type="text" [(ngModel)]="abkuerzung"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="fixed">Bedeutung:</ion-label>
-    <ion-input type="text" [(ngModel)]="bedeutung"></ion-input>
+    <ion-input label="Bedeutung" type="text" [(ngModel)]="bedeutung"></ion-input>
   </ion-item>
 
   &nbsp;
@@ -28,3 +26,4 @@
   <ion-button expand="block" (click)="onHinzufuegenButton()" >Speichern</ion-button>
 
 </ion-content>
+

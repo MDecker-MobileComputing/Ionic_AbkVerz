@@ -34,9 +34,12 @@ export class HomePage {
    */
   public async onSuchenButton() {
 
-    if (this.abkuerzung === null || this.abkuerzung === undefined || this.abkuerzung.trim().length == 0 ) {
+    if ( this.abkuerzung === null      ||
+         this.abkuerzung === undefined ||
+         this.abkuerzung.trim().length == 0 ) {
 
-      this.dialogToastHelferService.zeigeDialog("Ungültige Eingabe", "Bitte zu suchende Abkürzung eingeben!");
+      this.dialogToastHelferService.zeigeDialog( "Ungültige Eingabe",
+                                                 "Bitte zu suchende Abkürzung eingeben!" );
       return;
     }
 
@@ -52,7 +55,7 @@ export class HomePage {
 
           bedeutungenString += bedeutungenArray[i];
 
-          if (anzahl > 0 && i !== lastIndex) { bedeutungenString += ", "; }
+          if (anzahl > 0 && i !== lastIndex) { bedeutungenString += "\n"; } // siehe CSS-Definition in global.scss
         }
 
         const titel = `Ergebnis für "${this.abkuerzung}" (${anzahl}):`;
